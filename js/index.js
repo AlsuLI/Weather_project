@@ -1,7 +1,7 @@
 const changeWeatherBtn = document.querySelector(".change__city");
 const weatherInfo = document.querySelector(".weather__main__info");
 const finderForm = document.querySelector(".finder__form");
-const findCityBtn = document.querySelector(".find__city");
+const findCityBtn = document.querySelector(".find__btn");
 const temp = document.querySelector(".weather__temperature");
 const cityTyper = document.querySelector(".city__typer");
 const cityName = document.querySelector(".city__name");
@@ -30,6 +30,7 @@ function findLocation() {
       .then((dat) => dat);
     temp.textContent = Math.round(data.main.temp) + "℃";
     condition.textContent = data.weather[0].main;
+    cityName.textContent = data.name;
   }
   function error() {
     getWeather2();
@@ -53,7 +54,6 @@ findCityBtn.addEventListener("click", () => {
         weatherInfo.className = "weather__main__info";
         finderForm.className = "finder__form";
       } catch (err) {
-        console.log("gggg");
         errorContainer.className = "error2";
         finderForm.className = "finder__form";
         tryAgain();
@@ -75,12 +75,10 @@ const apiGeo = "at_uenbxiKT4ksWaSsHUOuXyZVsWdG2x";
 let dataMy = await fetch("https://api.ipify.org?format=json")
   .then((response) => response.json())
   .then((data) => data);
-  console.log(dataMy.ip);
   const url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_uenbxiKT4ksWaSsHUOuXyZVsWdG2x&ipAddress=${dataMy.ip}`;
    const dataApi = await fetch(url)
      .then((response) => response.json())
      .then((data) => data);
-     console.log(dataApi.location.city);
              const response2 = await fetch(
                `https://api.openweathermap.org/data/2.5/weather?q=${dataApi.location.city}&appid=c4d46da4340a6beb0a68b1ac2ce53651&units=metric`
              );
