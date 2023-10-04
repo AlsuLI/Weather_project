@@ -46,8 +46,6 @@ margin-top: 36px;
 border: none;
 background: none;
 cursor: pointer;
-text-align: center;
-margin-left: 51px;
 }
 .weather__condition {
  font-family: Inter;
@@ -65,13 +63,15 @@ line-height: 36px;
 letter-spacing: 0em;
 color: hsl(0, 0%, 50%);
 }
-/* .weather__main__info{
-  display: flex;
-  flex-direction: column;
-} */
+
 .weather__main__info2 {
   position: absolute;
-  left: -204px;
+  left: -300px;
+}
+.weather__main__info {
+display: flex;
+align-items: center;
+flex-direction: column;
 }
 .finder__form {
   display: none;
